@@ -19,15 +19,21 @@ public class Game {
 		JLabel titleLabel = new JLabel("Welcome To The Game");
 		JButton playButton = new JButton("Play");
 		playButton.setPreferredSize(new Dimension(400,40));
+		frame.setSize(new Dimension(WIDTH, HEIGHT));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		MainCanvas mainCanvas = new MainCanvas(WIDTH, HEIGHT);
+		mainCanvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
+		
 		
 		class PlayListener implements ActionListener{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				MainCanvas mainCanvas = new MainCanvas(WIDTH, HEIGHT);
-				mainCanvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+//				frame.setContentPane(mainCanvas);
+//				frame.revalidate();
 				titlePage.add(mainCanvas);
+				titlePage.revalidate();
 			}
 			
 		}
