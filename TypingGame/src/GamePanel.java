@@ -5,14 +5,16 @@ import javax.swing.*;
 public class GamePanel extends JPanel{
 	private final int WIDTH;
 	private final int HEIGHT;
-	MonkeyPanel monkeyPanel = new MonkeyPanel(700,350);
+	MonkeyPanel monkeyPanel;
 	TypingPanel typingPanel = new TypingPanel(700,350);
 	
 	public GamePanel(int W, int H) {
 		WIDTH = W;
 		HEIGHT = H;
-		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		monkeyPanel = new MonkeyPanel(700, 350);
+		monkeyPanel.setPreferredSize(new Dimension(700,350));
 		
+		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setUp();
 	}
 

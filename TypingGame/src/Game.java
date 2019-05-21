@@ -5,8 +5,8 @@ import javax.swing.*;
 
 public class Game {
 	
-	public static final int WIDTH = 1400;
-	public static final int HEIGHT = 700;
+	public static final int WIDTH = 1600;
+	public static final int HEIGHT = 1000;
 
 	public static void main(String[] args) {
 		
@@ -35,12 +35,7 @@ public class Game {
 			JButton playButton = new JButton("Play");
 			playButton.setPreferredSize(new Dimension(2000,2000));
 			
-			
-			MainCanvas mainCanvas = new MainCanvas(WIDTH, HEIGHT);
-			mainCanvas.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-			
-			
-			
+		
 			class PlayListener implements ActionListener{
 
 				@Override
