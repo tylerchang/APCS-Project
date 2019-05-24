@@ -3,13 +3,16 @@ public class Word {
 	private String word;
 	private int x;
 	private int y;
+	private boolean draw;
 	
 	public Word(String word) {
 		this.word = word;
-		x = 50;
-		y = 50;
+		draw = false;
+		x = (int)(Math.random()*600 + 100);
+		y = 10;
 	}
 	public String getText() {
+		draw = true;
 		return word;
 	}
 	public int getX() {
