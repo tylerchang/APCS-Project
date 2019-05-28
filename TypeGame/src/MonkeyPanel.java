@@ -6,11 +6,13 @@ import java.util.TimerTask;
 
 public class MonkeyPanel extends JComponent{
     private ImageIcon monkey;
+    private ImageIcon monkeyDead;
     private ImageIcon lava;
     private ImageIcon rope;
     private ImageIcon mountain;
+    public static boolean gameOver;
     private int monkeyX;
-    private int monkeyY;
+    private static int monkeyY;
     private int lavaX;
     private int lavaY;
     private int ropeX;
@@ -25,20 +27,24 @@ public class MonkeyPanel extends JComponent{
         monkey = new ImageIcon("monkey.png");
         monkeyX = 368;
         monkeyY = 20;
+        monkeyDead = new ImageIcon("monkey dead.png");
         lava = new ImageIcon("lava.jpg");
         lavaX = 5;
-        lavaY = 770;
-        rope = new ImageIcon("rope.png");
+        lavaY = 800;
+        rope = new ImageIcon("rope short.png");
         ropeX = 100;
         ropeY = 10;
         mountain = new ImageIcon("volcano.jpg");
         mountainX = 0;
         mountainY = 0;
+        gameOver = false;
         timer = new Timer();
         timerTask = new TimerTask(){
 			public void run() {
-				if(monkeyY < 700) {
-					monkeyY+=30;
+				if(monkeyY < 630) {
+					monkeyY+=22;
+				}else {
+					gameOver = true;
 				}
 				repaint();
 			}
@@ -53,9 +59,28 @@ public class MonkeyPanel extends JComponent{
     	g.drawImage(mountain.getImage(), mountainX, mountainY, this);
     	g.drawImage(lava.getImage(), lavaX, lavaY, this);
     	g.drawImage(rope.getImage(), ropeX, ropeY, this);
-    	g.drawImage(monkey.getImage(), monkeyX, monkeyY, this);
+    	
+    	if(!gameOver) {
+        	g.drawImage(monkey.getImage(), monkeyX, monkeyY, this);
+    	}else {
+        	g.drawImage(monkeyDead.getImage(), monkeyX, monkeyY, this);
+    	}
     	g.drawString(" "+ monkeyY, 40, 40);
 		
 	}
-	
+
+    public static void dropMonkeyY(){
+    	if(!gameOver) {
+    		monkeyY += 100;
+    	}
+    }
+    public static void raiseMonkeyY() {
+    	if(!gameOver) {
+    		if(monkeyY < 5) {
+    			monkeyY = 0;
+    		}else {
+        		monkeyY -= 25;
+    		}
+    	}
+    }
 }

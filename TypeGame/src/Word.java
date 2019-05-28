@@ -8,8 +8,8 @@ public class Word {
 	public Word(String word) {
 		this.word = word;
 		draw = false;
-		x = (int)(Math.random()*600 + 100);
-		y = 10;
+		x = (int)(Math.random()*500 + 100);
+		y = 900;
 	}
 	public String getText() {
 		draw = true;
