@@ -28,12 +28,12 @@ public class MonkeyPanel extends JComponent{
         monkeyX = 368;
         monkeyY = 20;
         monkeyDead = new ImageIcon("monkey dead.png");
-        lava = new ImageIcon("lava.jpg");
+        lava = new ImageIcon("ground.gif");
         lavaX = 5;
-        lavaY = 800;
+        lavaY = 680;
         rope = new ImageIcon("rope short.png");
         ropeX = 100;
-        ropeY = 10;
+        ropeY = 6;
         mountain = new ImageIcon("volcano.jpg");
         mountainX = 0;
         mountainY = 0;
@@ -42,7 +42,7 @@ public class MonkeyPanel extends JComponent{
         timerTask = new TimerTask(){
 			public void run() {
 				if(monkeyY < 630) {
-					monkeyY+=22;
+					monkeyY+=19;
 				}else {
 					gameOver = true;
 				}

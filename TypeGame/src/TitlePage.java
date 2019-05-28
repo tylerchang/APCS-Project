@@ -24,15 +24,16 @@ public class TitlePage extends JPanel{
 		titleLabel.setFont(new Font("Gotham", Font.BOLD, 100));
 		titleLabel.setForeground(Color.WHITE);
 		
-		playButton = new JButton("Yes I Can!");
-		playButton.setBackground(new Color(102, 0, 153));
-		playButton.setOpaque(false);
-		playButton.setPreferredSize(new Dimension(350,200));
+		playButton = new JButton("Play!");
+		playButton.setBackground(new Color(255, 77, 77));
+		playButton.setOpaque(true);
+		playButton.setBorderPainted(false);
+		playButton.setPreferredSize(new Dimension(350,120));
 		playButton.setFont(new Font("Gotham", Font.PLAIN, 60));
 		playButton.addActionListener(new PlayListener());
 		
 		gbc.gridx = 0;
-		gbc.gridy = 1;
+		gbc.gridy = 0;
 		this.add(titleLabel, gbc);
 		
 		gbc.gridx = 0;
@@ -56,3 +57,4 @@ class PlayListener implements ActionListener{
 		}
 	}
 }
+

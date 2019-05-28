@@ -34,7 +34,10 @@ public class InputBox extends JPanel{
 					TypingPanel.wordsFalling.remove(TypingPanel.wordsFalling.get(0));
 					MonkeyPanel.raiseMonkeyY();
 					textField.setText("");
-					
+					TypingPanel.isWrong = false;
+				}
+				else {
+					TypingPanel.isWrong = true;
 				}
 				
 			}
