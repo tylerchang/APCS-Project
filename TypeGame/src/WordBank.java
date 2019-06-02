@@ -14,14 +14,21 @@ public class WordBank {
 		f = new BufferedReader(new FileReader("WordBank.in"));
 		wordBank = new ArrayList<Word>();
 		for(int i = 0; i<1200; i++) {
+			
 			Word word = new Word(f.readLine());
 			wordBank.add(word);
 		}
 	}
 	public Word getWord() throws IOException {
 		
-		int x = (int) (Math.random()*wordBank.size());
-		return wordBank.remove(x);
+		if(!(wordBank.size() < 1)) {
+			int x = (int) (Math.random()*wordBank.size());
+			return wordBank.remove(x);
+		}else {
+			return new Word("You Beat The Game");
+		}
+		
+		
 		
 	}
 	

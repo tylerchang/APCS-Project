@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+
 import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,14 +21,31 @@ public class MonkeyPanel extends JComponent{
     private int ropeY;
     private int mountainX;
     private int mountainY;
-    private Timer timer;
+    public static Timer monkeyTimer;
 	private TimerTask timerTask;
     
 
     public MonkeyPanel(){
-        monkey = new ImageIcon("monkey.png");
-        monkeyX = 368;
-        monkeyY = 20;
+    	gameOver = false;
+    	if(!gameOver) {
+    		monkey = new ImageIcon("monkey.png");
+            monkeyX = 368;
+            monkeyY = 20;
+            
+            monkeyTimer = new Timer();
+            timerTask = new TimerTask(){
+    			public void run() {
+    				if(monkeyY < 630) {
+    					monkeyY+=19;
+    				}else {
+    					gameOver = true;
+    				}
+    				repaint();
+    			}
+            };
+            
+            monkeyTimer.schedule(timerTask,1000, 1000);
+    	}
         monkeyDead = new ImageIcon("monkey dead.png");
         lava = new ImageIcon("ground.gif");
         lavaX = 5;
@@ -37,21 +56,9 @@ public class MonkeyPanel extends JComponent{
         mountain = new ImageIcon("volcano.jpg");
         mountainX = 0;
         mountainY = 0;
-        gameOver = false;
-        timer = new Timer();
-        timerTask = new TimerTask(){
-			public void run() {
-				if(monkeyY < 630) {
-					monkeyY+=19;
-				}else {
-					gameOver = true;
-				}
-				repaint();
-			}
-        };
         
-        timer.schedule(timerTask,1000, 1000);
         this.setBorder(BorderFactory.createLineBorder(Color.black));
+
     }
     
     public void paintComponent(Graphics gr) {
@@ -59,6 +66,7 @@ public class MonkeyPanel extends JComponent{
     	g.drawImage(mountain.getImage(), mountainX, mountainY, this);
     	g.drawImage(lava.getImage(), lavaX, lavaY, this);
     	g.drawImage(rope.getImage(), ropeX, ropeY, this);
+    	
     	
     	if(!gameOver) {
         	g.drawImage(monkey.getImage(), monkeyX, monkeyY, this);
@@ -79,7 +87,7 @@ public class MonkeyPanel extends JComponent{
     		if(monkeyY < 5) {
     			monkeyY = 0;
     		}else {
-        		monkeyY -= 25;
+        		monkeyY -= 30;
     		}
     	}
     }

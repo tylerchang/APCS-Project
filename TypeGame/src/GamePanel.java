@@ -1,7 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 
 public class GamePanel extends JPanel{
@@ -19,15 +22,20 @@ public class GamePanel extends JPanel{
 		typingPanel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
 		
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		
 		setUp();
+
 	}
 
 	public void setUp(){
-		
+
 		GridLayout grid = new GridLayout(1,2);
 		this.setLayout(grid);
 		this.add(monkeyPanel);
 		this.add(typingPanel);
+
 	}
+	
+	
 
 }
